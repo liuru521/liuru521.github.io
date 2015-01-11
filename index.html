@@ -23,7 +23,8 @@
 </head>  
   
 <body>  
-  
+
+
 <div id="mainDiv">  
     <div id="content">  
         <div id="code">  
@@ -80,8 +81,8 @@
         </div>  
     </div>  
     <div id="copyright">  
-        <a href="#">For Ru</a><br />  
-        <a href="#">Revised by Lei</a><a href="#"> Copyright 2015 </a>
+        <a href="#">For Ru,Thanks for flowerPower project</a><br />  
+        <a href="#">Revised by Lei Copyright © 2015 </a>
 <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1813450333&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1813450333:52" alt="点击这里给我发消息" title="点击这里给我发消息"/></a> 
 
           
@@ -89,6 +90,62 @@
 </div>  
   
 <script type="text/javascript">  
+var imagepath="http://ad.jz123.cn/ad/42/1.gif" 
+var imagewidth=171 //这两行写图片的大小 
+var imageheight=133 
+var speed=3; 
+var imageclick="http://www.jz123.cn/" //这里写点击图片连接到的地址 
+var hideafter=0 
+var isie=0; 
+if(window.navigator.appName=="Microsoft Internet Explorer"&&window.navigator.appVersion.substring(window.navigator.appVersion.indexOf("MSIE")+5,window.navigator.appVersion.indexOf("MSIE")+8)>=5.5) { 
+isie=1; 
+} 
+else { 
+isie=0; 
+} 
+if(isie){ 
+var preloadit=new Image() 
+preloadit.src=imagepath 
+} 
+function pop() { 
+if(isie) { 
+x=x+dx;y=y+dy; 
+oPopup.show(x, y, imagewidth, imageheight); 
+if(x+imagewidth+5>screen.width) dx=-dx; 
+if(y+imageheight+5>screen.height) dy=-dy; 
+if(x<0) dx=-dx; 
+if(y<0) dy=-dy; 
+startani=setTimeout("pop();",50); 
+} 
+} 
+function dismisspopup(){ 
+clearTimeout(startani) 
+oPopup.hide() 
+} 
+function dowhat(){ 
+if (imageclick=="dismiss") 
+dismisspopup() 
+else 
+window.open(imageclick); 
+} 
+if(isie) { 
+var x=0,y=0,dx=speed,dy=speed; 
+var oPopup = window.createPopup(); 
+var oPopupBody = oPopup.document.body; 
+oPopupBody.style.cursor="hand" 
+oPopupBody.innerHTML = '<IMG SRC="'+preloadit.src+'">'; 
+oPopup.document.body.onmouseover=new Function("clearTimeout(startani)") 
+oPopup.document.body.onmouseout=pop 
+oPopup.document.body.onclick=dowhat 
+pop(); 
+if (hideafter>0) 
+setTimeout("dismisspopup()",hideafter*1000) 
+} 
+
+
+
+
+
 var offsetX = $("#loveHeart").width() / 2;  
 var offsetY = $("#loveHeart").height() / 2 - 55;  
 var together = new Date();  
@@ -97,6 +154,8 @@ together.setHours(0);
 together.setMinutes(0);  
 together.setSeconds(0);  
 together.setMilliseconds(0);  
+
+	
   
 if (!document.createElement('canvas').getContext) {  
     var msg = document.createElement("div");  
@@ -121,6 +180,6 @@ if (!document.createElement('canvas').getContext) {
     $("#code").typewriter();  
 }  
 </script>  
-  
+
 </body>  
 </html> 
